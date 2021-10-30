@@ -1,7 +1,6 @@
----
-layout: post
-title: My approach of DSA
----
+# Competitive Programming Repository
+
+The thing is, I'm quite confused between what CP is and what DSA is. They seem to be pointing towards the same thing, yes practical and theoritical approach level differ. So the Repo is called CSES, cause I aim to complete the set of questions there.
 
 ## STANDARD PROBLEM-SET CSES
 
