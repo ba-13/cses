@@ -1,7 +1,6 @@
----
-layout: post
-title: My approach of DSA
----
+# Competitive Programming Repository
+
+The thing is, I'm quite confused between what CP is and what DSA is. They seem to be pointing towards the same thing, yes practical and theoritical approach level differ. So the Repo is called CSES, cause I aim to complete the set of questions there.
 
 ## STANDARD PROBLEM-SET CSES
 
@@ -12,65 +11,8 @@ AIM - Complete them all by end of 3rd Semester.
 
 ---
 
-## Some standard Resources I think are great and still left to follow
+### STL and Recursion
 
-- STL
+These 2 folders contain the algo's implemented/learnt that are quite classic, and can act as a reference, cause they are well commented in my opinion.
 
-  - [Topcoder-I](https://www.topcoder.com/thrive/articles/Power%20up%20C++%20with%20the%20Standard%20Template%20Library%20Part%20One)
-  - [Topcoder-II](https://www.topcoder.com/thrive/articles/Power%20up%20C++%20with%20the%20Standard%20Template%20Library%20Part%20Two:%20Advanced%20Uses)
-
-- Structures
-
-  - [William Fiset](https://www.youtube.com/playlist?list=PLDV1Zeh2NRsB6SWUrDFW2RmDotAfPbeHu)
-
-- Pointers
-
-  - [Freecodecamp by Harsha](https://www.youtube.com/watch?v=zuegQmMdy8M)
-
-- Linked List
-
-  - [Interview Questions](https://www.geeksforgeeks.org/top-20-linked-list-interview-question/)
-
-- Matrix
-
-  - [Matrix Questions](https://www.geeksforgeeks.org/matrix/)
-
-- Trees
-
-  - [William Fiset](https://www.youtube.com/playlist?list=PLDV1Zeh2NRsDfGc8rbQ0_58oEZQVtvoIc)
-
-- Backtracking
-
-  - [Freecodecamp by Lynn](https://www.youtube.com/watch?v=A80YzvNwqXA)
-
-- Recursion
-
-  - [Freecodecamp by the Simple Enginner](https://www.youtube.com/watch?v=IJDJ0kBx2LM&t=2637s)
-
-- Dynamic Programming
-
-  - [Freecodecamp by Zablan](https://www.youtube.com/watch?v=oBt53YbR9Kk&t=223s)
-  - [William Fiset](https://www.youtube.com/playlist?list=PLDV1Zeh2NRsAsbafOroUBnNV8fhZa7P4u)
-
-- Hash Tables
-
-  - [William Fiset](https://www.youtube.com/playlist?list=PLDV1Zeh2NRsDH5Wq-Vk5tDb8gH03cULZS)
-
-- Graph Theory
-
-  - [William Fiset](https://www.youtube.com/playlist?list=PLDV1Zeh2NRsDGO4--qE8yH72HFL1Km93P)
-  - [RestingR](https://codeforces.com/blog/entry/60717)
-  - [Practice at Hackerrank](https://www.hackerearth.com/practice/algorithms/graphs/graph-representation/tutorial/)
-  - [PrinceOfPersia](https://codeforces.com/blog/entry/16221)
-
-- Number Theory
-
-  - [Hackerrank](https://www.hackerearth.com/practice/notes/number-theory-1/)
-  - [AOPS](https://artofproblemsolving.com/community/c90633h1291397)
-  - [CodeChef](https://www.codechef.com/wiki/tutorial-number-theory)
-  - [Compilation Summary](https://docs.google.com/document/d/1z3NtURVMyCkD1Ed4HuzkycpzKyc6kBaD9OYTbKJiDlU/edit)
-
-- Perfect Reference
-
-  - [CP-Algo](https://cp-algorithms.com)
-  - [CSES](https://cses.fi/problemset/)
+Checkout [this post](https://ba-13.github.io/2021/10/12/revise-dsa.html) for more info for resources.
