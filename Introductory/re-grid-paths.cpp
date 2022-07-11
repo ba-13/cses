@@ -1,153 +1,155 @@
-#include "../_header.hpp"
 
-std::invalid_argument OtherVal("Enter ?, U, R, D, L only");
-int result = 0;
-const int SZ = 7;
-std::unordered_map<int, char> mapping = {{1, 'U'}, {2, 'R'}, {3, 'D'}, {4, 'L'}};
+#include <bits/stdc++.h>
+#define lli long long int
+#define li long int
+#define ld long double
+using namespace std;
 
-bool isNotValidBoundary(int r, int c, std::vector<vi> &grid, vi &path, int idx)
+const lli mod = 1e9 + 7;
+const int n = 7;
+bool visited[n][n];
+int reserved[49];
+
+void move(int r, int c, int &ans, int &steps)
 {
-    if (r < 0 || c < 0 || r >= grid.size() || c >= grid[0].size())
-        return true;
-    if (grid[r][c] == 1)
-        return true;
-    // now if grid[r][c] == 0, check the previous location and the forward location
-    if (idx > 0)
+    if (r == n - 1 && c == 0)
     {
-        int lastMove = path[idx - 1];
-        switch (lastMove)
+        ans += (steps == n * n - 1);
+        return;
+    }
+
+    // if you hit a wall or a path (can only go left or right); return
+    if (((r + 1 == n || (visited[r - 1][c] && visited[r + 1][c])) && c - 1 >= 0 && c + 1 < n && !visited[r][c - 1] && !visited[r][c + 1]) ||
+        ((c + 1 == n || (visited[r][c - 1] && visited[r][c + 1])) && r - 1 >= 0 && r + 1 < n && !visited[r - 1][c] && !visited[r + 1][c]) ||
+        ((r == 0 || (visited[r + 1][c] && visited[r - 1][c])) && c - 1 >= 0 && c + 1 < n && !visited[r][c - 1] && !visited[r][c + 1]) ||
+        ((c == 0 || (visited[r][c + 1] && visited[r][c - 1])) && r - 1 >= 0 && r + 1 < n && !visited[r - 1][c] && !visited[r + 1][c]))
+        return;
+
+    visited[r][c] = true;
+
+    if (reserved[steps] != -1)
+    {
+        switch (reserved[steps])
         {
+        case 0:
+            if (r - 1 >= 0)
+            {
+                if (!visited[r - 1][c])
+                {
+                    steps++;
+                    move(r - 1, c, ans, steps);
+                    steps--;
+                }
+            }
+            break;
+
         case 1:
-            // we moved up to the current
-            if (r == 0 || grid[r - 1][c] == 1)
+            if (c + 1 < n)
             {
-                // now check if allowed in right and left
-                if (c > 0 and grid[r][c - 1] == 0 and c < SZ - 1 and grid[r][c + 1] == 0)
-                    return true;
+                if (!visited[r][c + 1])
+                {
+                    steps++;
+                    move(r, c + 1, ans, steps);
+                    steps--;
+                }
             }
             break;
+
         case 2:
-            if (c == SZ - 1 || grid[r][c + 1] == 1)
+            if (r + 1 < n)
             {
-                if (r > 0 and grid[r - 1][c] == 0 and r < SZ - 1 and grid[r + 1][c] == 0)
-                    return true;
+                if (!visited[r + 1][c])
+                {
+                    steps++;
+                    move(r + 1, c, ans, steps);
+                    steps--;
+                }
             }
             break;
+
         case 3:
-            if (r == SZ - 1 || grid[r + 1][c] == 1)
+            if (c - 1 >= 0)
             {
-                if (c > 0 and grid[r][c - 1] == 0 and c < SZ - 1 and grid[r][c + 1] == 0)
-                    return true;
+                if (!visited[r][c - 1])
+                {
+                    steps++;
+                    move(r, c - 1, ans, steps);
+                    steps--;
+                }
             }
-        case 4:
-            if (c == 0 || grid[r][c - 1])
-            {
-                if (r > 0 and grid[r - 1][c] == 0 and r < SZ - 1 and grid[r + 1][c] == 0)
-                    return true;
-            }
-
-        default:
             break;
         }
+        visited[r][c] = false;
+        return;
     }
-    return false;
-}
 
-int traverse(vi &path, std::vector<vi> &grid, int idx, int i, int j)
-{
-    if (isNotValidBoundary(i, j, grid, path, idx))
+    // move down
+    if (r + 1 < n)
     {
-        return -1;
-    }
-    if (idx == path.size())
-    {
-        if (i == SZ - 1 and j == 0)
+        if (!visited[r + 1][c])
         {
-            result++;
-            std::cout << result << " ";
-            ff(i, 0, path.size()) std::cout << mapping[path[i]];
-            std::cout << "\n";
-            std::cerr << "Found " << result << "\n";
-            return 1;
+            steps++;
+            move(r + 1, c, ans, steps);
+            steps--;
         }
-        return -1;
     }
-    else
-    {
-        if (i == SZ - 1 and j == 0)
-            return -1;
-    }
-    grid[i][j] = 1; // visit current
 
-    if (path[idx] != 0) // already decided path
+    // move right
+    if (c + 1 < n)
     {
-        if (path[idx] == 1)
-            // go up
-            traverse(path, grid, idx + 1, i - 1, j);
-        else if (path[idx] == 2)
-            // go right
-            traverse(path, grid, idx + 1, i, j + 1);
-        else if (path[idx] == 3)
-            // go down
-            traverse(path, grid, idx + 1, i + 1, j);
-        else if (path[idx] == 4)
-            // go left
-            traverse(path, grid, idx + 1, i, j - 1);
+        if (!visited[r][c + 1])
+        {
+            steps++;
+            move(r, c + 1, ans, steps);
+            steps--;
+        }
     }
-    else
+
+    // move up
+    if (r - 1 >= 0)
     {
-        // go in all directions
-        path[idx] = 1;
-        traverse(path, grid, idx + 1, i - 1, j);
-        path[idx] = 2;
-        traverse(path, grid, idx + 1, i, j + 1);
-        path[idx] = 3;
-        traverse(path, grid, idx + 1, i + 1, j);
-        path[idx] = 4;
-        traverse(path, grid, idx + 1, i, j - 1);
-        path[idx] = 0;
+        if (!visited[r - 1][c])
+        {
+            steps++;
+            move(r - 1, c, ans, steps);
+            steps--;
+        }
     }
-    grid[i][j] = -1; // unvisit this node
-    return -1;
+
+    // move left
+    if (c - 1 >= 0)
+    {
+        if (!visited[r][c - 1])
+        {
+            steps++;
+            move(r, c - 1, ans, steps);
+            steps--;
+        }
+    }
+    visited[r][c] = false;
 }
 
 int main()
 {
-    vi path(SZ * SZ - 1, -1);
-    std::vector<vi> grid(SZ, vi(SZ, -1));
-    std::string s = "??????R??????U??????????????????????????LD????D?";
-    ff(i, 0, path.size())
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    string path;
+    cin >> path;
+    for (int i = 0; i < path.length(); i++)
     {
-        char tmp = s[i];
-        // char tmp = getchar();
-        switch (tmp)
-        {
-        /*
-            1
-          4 0 2
-            3
-        */
-        case '?':
-            path[i] = 0;
-            break;
-        case 'U':
-            path[i] = 1;
-            break;
-        case 'R':
-            path[i] = 2;
-            break;
-        case 'D':
-            path[i] = 3;
-            break;
-        case 'L':
-            path[i] = 4;
-            break;
-        default:
-            throw OtherVal;
-        }
+        if (path[i] == '?')
+            reserved[i] = -1;
+        else if (path[i] == 'U')
+            reserved[i] = 0;
+        else if (path[i] == 'R')
+            reserved[i] = 1;
+        else if (path[i] == 'D')
+            reserved[i] = 2;
+        else if (path[i] == 'L')
+            reserved[i] = 3;
     }
-    int i = 0, j = 0;
-    traverse(path, grid, 0, i, j);
-    std::cout << result;
+    int ans = 0, steps = 0;
+    move(0, 0, ans, steps);
+    cout << ans;
     return 0;
 }
