@@ -6,6 +6,7 @@ The thing is, I'm quite confused between what CP is and what DSA is. They seem t
 
 This is my reference goto site for 300 Algorithmic Problems - [CSES Standard Problem-set](https://cses.fi/problemset/list/)  
 AIM - Complete them all by end of 3rd Semester.
+Tbh I'm entering the 6th semester now.
 
 [List of 75 LeetCode problems](https://www.teamblind.com/post/New-Year-Gift---Curated-List-of-Top-75-LeetCode-Questions-to-Save-Your-Time-OaM1orEU)
 
