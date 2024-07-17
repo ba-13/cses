@@ -1,3 +1,5 @@
 bin/
 _in.txt
 _out.txt
+cses.sublime-*
+.vscode
