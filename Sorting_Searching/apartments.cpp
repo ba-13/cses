@@ -1,15 +1,15 @@
 /*
-* @Author: ba13
-* @Date:   2024-02-24 02:34:51
-* @Last Modified by:   ba13
-* @Last Modified time: 2024-07-18 02:23:26
-*/
+ * @Author: ba13
+ * @Date:   2024-02-24 02:34:51
+ * @Last Modified by:   ba13
+ * @Last Modified time: 2024-07-18 02:23:26
+ */
+#include <algorithm>
 #include <ctime>
 #include <iostream>
 #include <random>
 #include <stdlib.h>
 #include <vector>
-#include <algorithm>
 #define endl "\n"
 #define fr(i, n) for (int i = 0; i < n; ++i)
 #define ll long long
@@ -32,11 +32,15 @@ int main()
     int applicant = 0, apartment = 0;
     for (; applicant < n_applicants; applicant++)
     {
-        while (available_sizes[apartment] <= k_threshold + desired_sizes[applicant])
+        while (available_sizes[apartment] <=
+               k_threshold + desired_sizes[applicant])
         {
             if (apartment == m_apartments)
                 break;
-            if (available_sizes[apartment] <= desired_sizes[applicant] + k_threshold and available_sizes[apartment] >= desired_sizes[applicant] - k_threshold)
+            if (available_sizes[apartment] <=
+                    desired_sizes[applicant] + k_threshold and
+                available_sizes[apartment] >=
+                    desired_sizes[applicant] - k_threshold)
             {
                 result++;
                 apartment++;

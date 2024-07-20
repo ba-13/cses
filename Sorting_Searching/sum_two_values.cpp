@@ -1,10 +1,10 @@
+#include <algorithm>
 #include <ctime>
 #include <iostream>
 #include <random>
 #include <stdlib.h>
-#include <vector>
-#include <algorithm>
 #include <utility>
+#include <vector>
 #define endl "\n"
 #define fr(i, n) for (int i = 0; i < n; ++i)
 #define ll long long
@@ -37,6 +37,7 @@ int main()
     if ((l == u) or (numbers[l].first + numbers[u].first != target))
         std::cout << "IMPOSSIBLE";
     else
-        std::cout << numbers[l].second + 1 << " " << numbers[u].second + 1 << "\n";
+        std::cout << numbers[l].second + 1 << " " << numbers[u].second + 1
+                  << "\n";
     return 0;
 }

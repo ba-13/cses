@@ -1,6 +1,6 @@
+#include <algorithm>
 #include <iostream>
 #include <vector>
-#include <algorithm>
 #define endl "\n"
 #define fr(i, n) for (int i = 0; i < n; ++i)
 #define ll int64_t
@@ -38,7 +38,8 @@ int main()
     }
     if (max_sum == INT64_MIN)
     {
-        std::vector<int>::iterator val = std::max_element(numbers.begin(), numbers.end());
+        std::vector<int>::iterator val =
+            std::max_element(numbers.begin(), numbers.end());
         max_sum = *val;
     }
     std::cout << max_sum << endl;

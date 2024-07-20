@@ -27,8 +27,8 @@ struct ListNode
 struct DLListNode
 {
     int val;
-    DLListNode *prev;
     DLListNode *next;
+    DLListNode *prev;
     DLListNode(int x) : val(x), next(NULL), prev(NULL){};
 };
 
@@ -220,7 +220,7 @@ std::pair<DLListNode *, DLListNode *> arr2DLL(vi &arr)
     head->next = NULL;
     head->prev = NULL;
     tail = head;
-    for (int i = 1; i < arr.size(); i++)
+    for (int i = 1; i < (int)arr.size(); i++)
     {
         DLListNode *tmp = new DLListNode(arr[i]);
         tmp->prev = tail;
@@ -281,7 +281,7 @@ TreeNode *buildTreeFromArr(vi arr, TreeNode *root, int idx)
 {
     if (arr[idx] == -1)
         return NULL;
-    if (idx > arr.size() - 1)
+    if (idx > (int)arr.size() - 1)
         return NULL;
     root = new TreeNode(arr[idx]);
     root->left = buildTreeFromArr(arr, root->left, 2 * idx);

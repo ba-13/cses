@@ -1,18 +1,18 @@
 /*
-* @Author: ba13
-* @Date:   2024-02-24 02:34:51
-* @Last Modified by:   ba13
-* @Last Modified time: 2024-07-18 02:23:37
-*/
+ * @Author: ba13
+ * @Date:   2024-02-24 02:34:51
+ * @Last Modified by:   ba13
+ * @Last Modified time: 2024-07-18 02:23:37
+ */
+#include <algorithm>
 #include <ctime>
 #include <iostream>
-#include <random>
-#include <stdlib.h>
-#include <vector>
 #include <list>
-#include <algorithm>
-#include <utility>
+#include <random>
 #include <set>
+#include <stdlib.h>
+#include <utility>
+#include <vector>
 #define endl "\n"
 #define fr(i, n) for (int i = 0; i < n; ++i)
 #define ll long long
