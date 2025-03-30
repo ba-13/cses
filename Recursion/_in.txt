@@ -1,3 +1,0 @@
-abcdef
-7
-ab abc cd def abcd ef c
