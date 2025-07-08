@@ -9,44 +9,39 @@
 #define ll long long
 #define vi std::vector<int>
 
-int gondolas_needed(int n, int x, std::vector<int> &weights)
-{
-    int result = 0;
-    int light = n - 1, heavy = 0;
-    while (heavy <= light) // irony
-    {
-        if (weights[heavy] + weights[light] <= x)
-        {
-            heavy++, light--;
-        }
-        else
-        {
-            heavy++;
-        }
-        result++;
+int gondolas_needed(int n, int x, std::vector<int> &weights) {
+  int result = 0;
+  int light = n - 1, heavy = 0;
+  while (heavy <= light) // irony
+  {
+    if (weights[heavy] + weights[light] <= x) {
+      heavy++, light--;
+    } else {
+      heavy++;
     }
-    // if (heavy == light)
-    //     result++;
+    result++;
+  }
+  // if (heavy == light)
+  //     result++;
 
-    return result;
+  return result;
 }
 
-int main()
-{
-    int n_children = -1, x_gondola_weight = -1;
-    std::cin >> n_children >> x_gondola_weight;
-    std::vector<int> weights(n_children);
-    fr(i, n_children) std::cin >> weights[i];                       // 7 2 3 9
-    std::sort(weights.begin(), weights.end(), std::greater<int>()); // 9 7 3 2
+int main() {
+  int n_children = -1, x_gondola_weight = -1;
+  std::cin >> n_children >> x_gondola_weight;
+  std::vector<int> weights(n_children);
+  fr(i, n_children) std::cin >> weights[i];                       // 7 2 3 9
+  std::sort(weights.begin(), weights.end(), std::greater<int>()); // 9 7 3 2
 
-    int result = 0;
+  int result = 0;
 
-    if (*weights.begin() > x_gondola_weight)
-        result = -1;
-    else
-        result = gondolas_needed(n_children, x_gondola_weight, weights);
+  if (*weights.begin() > x_gondola_weight)
+    result = -1;
+  else
+    result = gondolas_needed(n_children, x_gondola_weight, weights);
 
-    std::cout << result << "\n";
+  std::cout << result << "\n";
 
-    return 0;
+  return 0;
 }
